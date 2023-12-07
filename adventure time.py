@@ -82,11 +82,12 @@ help/?: Print this message
         pause()
         os.system("cls")
         print(f"{FAIL_BANNER}\n{message}")
-        input("Press enter to restart...")
         # Check if the fail has been done already
-        if fails.count(message) != 0:
+        if fails.count(message) == 0:
+            print("**NEW FAIL**")
             completed_fails += 1
             fails+=message
+        input("Press enter to restart...")
         end()
         return fails, completed_fails
     print("You walk into your favorite donut shop, what topping do you get?")
