@@ -75,6 +75,8 @@ def game(*global_vars):
                 except:
                     if allow_commands:
                         command_check(input_value)
+                    else:
+                        print("Please type the number of the option you want to pick")
             else:
                 input_invalid = False
             clear = False
@@ -106,7 +108,7 @@ def game(*global_vars):
                 confirmation = get_input(False, True, "Yes!", "WAIT, No!", allow_commands=False)
                 if confirmation == 1:
                     print("Okay, bye!")
-                    return 1
+                    exit()
             case "help" | "?":
                 print(
                     """reset: Reset the game from the start
