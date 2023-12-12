@@ -6,6 +6,9 @@
 # So no exiting, no looping back to previous decisions when you fail, and GOD FORBID you store stuff in arrays
 # You wanna know something? He's probably gonna get me for something in here.
 # Sorry for the lack of comments, I had 2 hours and 15 minutes to write this (45 minute classes, 3 days, github is blocked on school chromebooks :])
+# I technically had a week (A total of 5 hours, 15 minutes), but clearly the story wasn't a teacher preset or made by AI
+# He wanted me and a partner to write this (Thank you Ben!)
+# We had to code separately unfortunately (Sorry Ben :[)
 
 import os
 
