@@ -2,7 +2,7 @@
 # Brayden Towner
 # 12/06/2023
 
-# Because this is already "Non-teacher" compliant, let's just go all in
+# Because this is already "Non-teacher" compliant, let's just go all in (and by all in I mean make slightly nicer)
 import os
 from inspect import cleandoc
 
