@@ -1,7 +1,10 @@
 # Adventure
 # Brayden Towner
 # 12/06/2023
+
+# Because this is already "Non-teacher" compliant, let's just go all in
 import os
+from inspect import cleandoc
 
 TOTAL_FAILS = 17
 TOTAL_ENDINGS = 2
@@ -82,7 +85,8 @@ def game(*global_vars):
             else:
                 input_invalid = False
         return input_value
-
+    def clean_print(*args):
+        print(cleandoc(*args))
     def command_check(command):
         """Checks if the input given is a command
 
@@ -111,14 +115,15 @@ def game(*global_vars):
                     print("Okay, bye!")
                     exit()
             case "help" | "?":
-                print(
-                    """reset: Reset the game from the start
-fails: Tells you how many fails you've completed and how many there are
-endings/ends: Tells you how many endings there are and how many you've done
-exit: Leave this program (It will NOT save)
-help/?: Print this message
-If you're confused about the options, you type the number of what you want to do
-"""
+                clean_print(
+                    """
+                    reset: Reset the game from the start
+                    fails: Tells you how many fails you've completed and how many there are
+                    endings/ends: Tells you how many endings there are and how many you've done
+                    exit: Leave this program (It will NOT save)
+                    help/?: Print this message
+                    If you're confused about the options, you type the number of what you want to do
+                    """
                 )
             case _:
                 print("That's not a valid command or choice")
@@ -166,20 +171,24 @@ If you're confused about the options, you type the number of what you want to do
     print(
         "If you want a list of commands, use 'help' or '?' in any section other then the first one. They aren't required for this\n"
     )
-    print(
-        """Actually, as you're walking towards it, you see a sign for a museum showing of "The Pharaoh's bracelet" made of gold and jewels. Know what? Screw that donut, let's go rob that crap
+    clean_print(
+        """
+        Actually, as you're walking towards it, you see a sign for a museum showing of "The Pharaoh's bracelet" made of gold and jewels. Know what? Screw that donut, let's go rob that crap
 
-You wait until the dead of night and approach the back wall of the museum
-You use the..."""
+        You wait until the dead of night and approach the back wall of the museum
+        You use the...
+        """
     )
     input_value = get_input("Jetpack", "Teleporter", "Sticky Bomb")
     match input_value:
         case 1:
             pass
         case 2:
-            print(
-                """Beep. Boop. Bop. You press some buttons, but you don't really know how to work this thing.
-Well, after you're sure enough you made it into the museum, you press the big middle button. Turns out you teleported out of bounds and softlock yourself. Nice going"""
+            clean_print(
+                """
+                Beep. Boop. Bop. You press some buttons, but you don't really know how to work this thing.
+                Well, after you're sure enough you made it into the museum, you press the big middle button. Turns out you teleported out of bounds and softlock yourself. Nice going
+                """
             )
             fail("Speedrun Strats")
         case 3:
@@ -192,8 +201,10 @@ Well, after you're sure enough you made it into the museum, you press the big mi
     print("You don't really know how to use this thing, but how hard can it be?")
     pause()
     print(
-        """You fly up successfully!
-Then backwards... Then left, right, down, up, down again, forward, and through the wall. Somehow the head trauma didn't kill you. Yet. You're in the broom closet."""
+        """
+        You fly up successfully!
+        Then backwards... Then left, right, down, up, down again, forward, and through the wall. Somehow the head trauma didn't kill you. Yet. You're in the broom closet.
+        """
     )
     input_value = get_input(
         "Book it to the exhibit", "Vent", "Use the mop bucket"
@@ -243,9 +254,11 @@ Then backwards... Then left, right, down, up, down again, forward, and through t
                 case 3:
                     pass
                 case 4:
-                    print(
-                        """You read the label of the exhibit. It read something like "tor hammer".
-You proceed to lift it with all your might, it starts to move! You finally get it off the stand over your feet and- *comedic slip sound*"""
+                    clean_print(
+                        """
+                        You read the label of the exhibit. It read something like "tor hammer".
+                        You proceed to lift it with all your might, it starts to move! You finally get it off the stand over your feet and- *comedic slip sound*
+                        """
                     )
                     pause()
                     print("aaaaAAAAAAAAAAAAAAAHHH!!")
@@ -294,9 +307,9 @@ You proceed to lift it with all your might, it starts to move! You finally get i
                     pass
             print("You put on some old school hip-hop next to the cardboard boxes.")
             pause()
-            print(
+            clean_print(
                 """The guards are so "annoyed" that they go to "investigate" that while "breaking some boxes up".
-Despite how much you want to see the obvious dance battle happening, you came here for the bracelet. There's a thick glass casing between you and the bracelet"""
+                Despite how much you want to see the obvious dance battle happening, you came here for the bracelet. There's a thick glass casing between you and the bracelet"""
             )
             input_value = get_input(
                 "Smash glass using hammer", "Use laser"
@@ -384,12 +397,14 @@ Despite how much you want to see the obvious dance battle happening, you came he
                         "You break the dino egg with your bare hands. It's a few million years old though, any dino that would be in there is long dead. It stinks up the whole room causing all the guards to pass out. You aren't immune to the stench"
                     )
                     fail("ALRIGHT! I'm back with the drin- what the heck happened")
-            print(
-                """Your only real option, let's be honest. You charge into the wall, blowing it down using the mop as you ride out at high speeds.
-hey didn't even have the time to sound the alarm before you were gone. They try to fire a few rounds, but they bounce off the bucket! (Mostly because the bullets were slow but lets ignore that)"""
+            clean_print(
+                """
+                Your only real option, let's be honest. You charge into the wall, blowing it down using the mop as you ride out at high speeds.
+                They didn't even have the time to sound the alarm before you were gone. They try to fire a few rounds, but they bounce off the bucket! (Mostly because the bullets were slow but lets ignore that)
+                """
             )
             ending("MOP MASTER")
 
 
-if not game():
+if not bool(game()):
     print("The game has a loose end somewhere, so you have been booted. Sorry")
