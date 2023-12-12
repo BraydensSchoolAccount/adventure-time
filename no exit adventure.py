@@ -50,7 +50,7 @@ def game(*global_vars):
         game(completed_fails, completed_endings, fails, endings)
         return
 
-    def get_input(accept_string=False, clear=True, *options, allow_commands = True):
+    def get_input(*options, allow_commands = True, accept_string=False, clear=True):
         """Get's the users input and checks if its a command or not
 
         Args:
@@ -71,6 +71,7 @@ def game(*global_vars):
             input_value = input("> ").lower()
             if clear:
                 os.system("cls")
+            clear = False
             # Only check for commands if it doesn't accept strings
             if not accept_string:
                 try:
@@ -86,7 +87,6 @@ def game(*global_vars):
                         print("Please type the number of the option you want to pick")
             else:
                 input_invalid = False
-            clear = False
         return input_value
 
     def command_check(command):
@@ -160,7 +160,7 @@ If you're confused about the options, you type the number of what you want to do
         end(completed_endings=completed_endings, endings=endings)
 
     print("You walk into your favorite donut shop, what topping do you get?")
-    input_value = get_input(True)
+    input_value = get_input(accept_string=True)
     if input_value == "sprinkles":
         print("...wow you're basic")
     print(
@@ -172,7 +172,7 @@ If you're confused about the options, you type the number of what you want to do
 You wait until the dead of night and approach the back wall of the museum
 You use the..."""
     )
-    input_value = get_input(False, True, "Jetpack", "Teleporter", "Sticky Bomb")
+    input_value = get_input("Jetpack", "Teleporter", "Sticky Bomb")
     match input_value:
         case 1:
             pass
@@ -196,7 +196,7 @@ Well, after you're sure enough you made it into the museum, you press the big mi
 Then backwards... Then left, right, down, up, down again, forward, and through the wall. Somehow the head trauma didn't kill you. Yet. You're in the broom closet."""
     )
     input_value = get_input(
-        False, True, "Book it to the exhibit", "Vent", "Use the mop bucket"
+        "Book it to the exhibit", "Vent", "Use the mop bucket"
     )
     match input_value:
         case 1:
@@ -221,8 +221,6 @@ Then backwards... Then left, right, down, up, down again, forward, and through t
                 "It's not the one with the bracelet! You look over and see a sign pointing to the bracelet exhibit, but there's a locked door in the way. You're in some sort of artifact room"
             )
             input_value = get_input(
-                False,
-                True,
                 "Liquidifier",
                 "Backwards long jump",
                 "Mummies Hair",
@@ -269,7 +267,7 @@ You proceed to lift it with all your might, it starts to move! You finally get i
                 "Somehow, click! The lock falls off the door. That's... not how locks work but oh well. You walk into the exhibit with the bracelet, there are 2 guards talking. They haven't noticed you yet"
             )
             input_value = get_input(
-                False, True, "KILLSTREAK", "Unplug Router", "Boombox"
+                "KILLSTREAK", "Unplug Router", "Boombox"
             )
             match input_value:
                 case 1:
@@ -301,7 +299,7 @@ You proceed to lift it with all your might, it starts to move! You finally get i
 Despite how much you want to see the obvious dance battle happening, you came here for the bracelet. There's a thick glass casing between you and the bracelet"""
             )
             input_value = get_input(
-                False, True, "Smash glass using hammer", "Use laser"
+                "Smash glass using hammer", "Use laser"
             )
             match input_value:
                 case 1:
@@ -321,7 +319,7 @@ Despite how much you want to see the obvious dance battle happening, you came he
             )
             pause()
             print("You are confronted by two guards in a doorway")
-            input_value = get_input(False, True, "Green Shell", "Drift", "Nitro Boost")
+            input_value = get_input("Green Shell", "Drift", "Nitro Boost")
             match input_value:
                 case 1:
                     print(
@@ -339,8 +337,6 @@ Despite how much you want to see the obvious dance battle happening, you came he
                 "Just like real life, you decide to avoid your problems. Turning on the boosters, you go right past the guards, who proceed to miss all their shots. You're right next to the bracelet, what's your next move?"
             )
             input_value = get_input(
-                False,
-                True,
                 "Think",
                 "Throw the glass",
                 "Smash the glass using fist",
@@ -368,8 +364,6 @@ Despite how much you want to see the obvious dance battle happening, you came he
                 "It's heavy, but it was pretty easy to throw off. You grab the bracelet and put it on. Now you might wanna get out before those guards catch up"
             )
             input_value = get_input(
-                False,
-                True,
                 "Cheat",
                 "Use the mop bucket",
                 "Break Dino Egg"
