@@ -1,6 +1,12 @@
 # Adventure
 # Brayden Towner
 # 12/06/2023
+
+# He didn't want any code he didn't teach, and this is already pushing it.
+# So no exiting, no looping back to previous decisions when you fail, and GOD FORBID you store stuff in arrays
+# You wanna know something? He's probably gonna get me for something in here.
+# Sorry for the lack of comments, I had 2 hours and 15 minutes to write this (45 minute classes, 3 days, github is blocked on school chromebooks :])
+
 import os
 
 TOTAL_FAILS = 17
@@ -104,18 +110,12 @@ def game(*global_vars):
                 )
                 if completed_endings == TOTAL_ENDINGS:
                     print("Now that you did that, maybe find all the fails?")
-            case "exit":
-                print("All progress will be deleted, are you sure?")
-                confirmation = get_input(False, True, "Yes!", "WAIT, No!", allow_commands=False)
-                if confirmation == 1:
-                    print("Okay, bye!")
-                    exit()
             case "help" | "?":
                 print(
                     """reset: Reset the game from the start
 fails: Tells you how many fails you've completed and how many there are
 endings/ends: Tells you how many endings there are and how many you've done
-exit: Leave this program (It will NOT save)
+exit: Wait, nevermind :/
 help/?: Print this message
 If you're confused about the options, you type the number of what you want to do
 """
